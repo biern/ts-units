@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "ts-node generate.ts > math.d.ts",
     "build": "rm -rf dist && tsc -p . && cp *.d.ts package*.json *.md dist/",
-    "publish": "cd dist && npm publish",
+    "publish": "npm publish dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
