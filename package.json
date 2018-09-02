@@ -1,11 +1,11 @@
 {
   "name": "ts-units",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "generate": "ts-node generate.ts > math.d.ts",
-    "build": "rm -rf dist && tsc -p . && cp *.d.ts dist/",
+    "build": "rm -rf dist && tsc -p . && cp *.d.ts package*.json dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
