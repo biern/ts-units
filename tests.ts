@@ -1,11 +1,11 @@
-import { Units, UnitsDefinition, Mul, Div, Unit, Invert } from '.';
+import { UnitsMeta, Units, Mul, Div, Unit, Invert } from '.';
 
 
-export type TypedNumber<U extends UnitsDefinition> =
-  Units<U> & {
+export type TypedNumber<U extends Units> =
+  UnitsMeta<U> & {
     plus(other: TypedNumber<U>): TypedNumber<U>;
-    mul<O extends UnitsDefinition>(other: TypedNumber<O>): TypedNumber<Mul<U, O>>;
-    div<O extends UnitsDefinition>(other: TypedNumber<O>): TypedNumber<Div<U, O>>;
+    mul<O extends Units>(other: TypedNumber<O>): TypedNumber<Mul<U, O>>;
+    div<O extends Units>(other: TypedNumber<O>): TypedNumber<Div<U, O>>;
   }
 
 

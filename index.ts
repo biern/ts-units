@@ -1,20 +1,21 @@
 import { Add, Negate, Numbers } from "./math";
 
 
-export type UnitsDefinition = {
+export type Units = {
   [K: string]: Numbers;
 };
 
 
-export type Units<U extends UnitsDefinition> =
+export type UnitsMeta<U extends Units> =
   {  __type: U, __units: keyof U };
 
 
-export type Unit<N extends string> = { [P in N]: 1 };
-export type Invert<N extends string> = { [P in N]: -1 };
+export type Unit<U extends string> = { [P in U]: 1 };
+export type Pow<U extends string, N extends Numbers> = { [P in U]: N };
+export type Invert<U extends string> = { [P in U]: -1 };
 
 
-export type Mul<A extends UnitsDefinition, B extends UnitsDefinition> =
+export type Mul<A extends Units, B extends Units> =
   { [P in MulKeys<A, B>]:
     P extends keyof B ?
     (P extends keyof A ? Add<A[P], B[P]> : B[P])
@@ -23,7 +24,7 @@ export type Mul<A extends UnitsDefinition, B extends UnitsDefinition> =
   }
 
 
-export type Div<A extends UnitsDefinition, B extends UnitsDefinition> =
+export type Div<A extends Units, B extends Units> =
   Mul<A, InvertO<B>>;
 
 
