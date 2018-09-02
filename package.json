@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
+    "generate": "ts-node generate.ts > math.d.ts",
+    "build": "rm -rf dist && tsc -p . && cp *.d.ts dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ramda": "^0.25.37",
+    "ramda": "^0.25.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
+  }
 }
