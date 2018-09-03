@@ -1,5 +1,11 @@
 # ts-units
 
+Typing library that provides a basic type-level units arithmetics and validation.
+
+Never [mistake metres with miles][1] and be sure of your currency conversions.
+
+[1]: https://en.wikipedia.org/wiki/Mars_Climate_Orbiter#Cause_of_failure
+
 ## Example
 
 ``` typescript
