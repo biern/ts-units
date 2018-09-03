@@ -30,5 +30,5 @@ const gravity = {} as TypedNumber<Acceleration>;
 const mass: TypedNumber<Unit<'Kg'>> = force.div(gravity);
 
 // Throws type error
-const speed: TypedNumber<Speed> = force.div(gravity);
+const mass: TypedNumber<Unit<'Kg'>> = force.mul(gravity);
 ```
