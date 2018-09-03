@@ -10,7 +10,15 @@ export type UnitsMeta<U extends Units> =
   {  __type: U, __units: keyof U };
 
 
+// `Units` constructors`
+
+/**
+ * `Pure` value is a value without any unit
+ */
+export type Pure = {};
+
 export type Unit<U extends string> = { [P in U]: 1 };
+
 export type Pow<U extends string, N extends Numbers> = { [P in U]: N };
 export type Invert<U extends string> = { [P in U]: -1 };
 

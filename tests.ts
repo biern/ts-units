@@ -1,4 +1,15 @@
-import { UnitsMeta, Units, Mul, Div, Unit, Invert } from '.';
+import { UnitsMeta, Units, Mul, Div, Unit, Invert, Pure } from '.';
+
+
+function check<T>(value: T) {}
+function type<T>(): T { return (undefined as any) as T; }
+
+
+type A = Unit<'A'>;
+
+
+check<A>(type<Mul<A, Pure>>());
+check<A>(type<Div<A, Pure>>());
 
 
 export type TypedNumber<U extends Units> =
@@ -14,19 +25,17 @@ export type Scalar<K extends string> = TypedNumber<{
 }>;
 
 
-function check<T>(value: T) {}
-function type<T>(): T { return (undefined as any) as T; }
-
-
 const a = {} as Scalar<'A'>;
 const b = {} as Scalar<'B'>;
 const c = {} as Scalar<'C'>;
 const d = {} as Scalar<'D'>;
+const pure = {} as TypedNumber<Pure>;
 
 
 check<unknown>(a.plus(a.mul(b)));
 check<unknown>(a.plus(b));
 check<unknown>(a.plus(a.mul(a)));
+check<unknown>(a.plus(pure));
 check<Scalar<'A'>>(a.plus(a));
 check<Scalar<'A'>>(a.mul(b).div(b));
 
