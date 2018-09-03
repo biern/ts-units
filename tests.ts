@@ -1,4 +1,4 @@
-import { UnitsMeta, Units, Mul, Div, Unit, Invert, Pure } from '.';
+import { UnitsMeta, Units, Mul, Div, Unit, Inverse, Pure } from '.';
 
 
 function check<T>(value: T) {}
@@ -6,10 +6,19 @@ function type<T>(): T { return (undefined as any) as T; }
 
 
 type A = Unit<'A'>;
+type B = Unit<'A'>;
+type AB = Unit<'A'> & Unit<'B'>;
 
 
 check<A>(type<Mul<A, Pure>>());
 check<A>(type<Div<A, Pure>>());
+
+check<Pure>(type<Mul<Pure, Pure>>());
+check<Pure>(type<Div<Pure, Pure>>());
+check<Pure>(type<Inverse<Pure>>());
+
+
+check<Inverse<'A'> & Inverse<'B'>>(type<Inverse<AB>>());
 
 
 export type TypedNumber<U extends Units> =
@@ -55,7 +64,7 @@ const foo: Scalar<'D'> = (
   .div(b.mul(c).mul(a));
 
 
-type Speed = TypedNumber<Unit<'Distance'> & Invert<'Time'>>;
+type Speed = TypedNumber<Unit<'Distance'> & Inverse<'Time'>>;
 
 const time = {} as TypedNumber<Unit<'Time'>>;
 const dist = {} as TypedNumber<Unit<'Distance'>>;

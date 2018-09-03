@@ -3,7 +3,7 @@
 ## Example
 
 ``` typescript
-import { Units, Unit, UnitsMeta, Mul, Div, Invert, Pow } from 'ts-units';
+import { Units, Unit, UnitsMeta, Mul, Div, Inverse, Pow } from 'ts-units';
 
 
 // Custom typed number declaration
@@ -16,7 +16,7 @@ export type TypedNumber<U extends Units> =
   }
 
 
-type Speed = Unit<'Metre'> & Invert<'Second'>;
+type Speed = Unit<'Metre'> & Inverse<'Second'>;
 type Acceleration = Unit<'Metre'> & Pow<'Second', -2>;
 type Force = Unit<'Kg'> & Acceleration;
 
