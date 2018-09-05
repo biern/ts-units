@@ -69,4 +69,7 @@ type Speed = TypedNumber<Unit<'Distance'> & Inverse<'Time'>>;
 const time = {} as TypedNumber<Unit<'Time'>>;
 const dist = {} as TypedNumber<Unit<'Distance'>>;
 
-const v: Speed = time.div(dist);
+let v: Speed;
+
+v = time.div(dist); // err
+v = dist.div(time);
