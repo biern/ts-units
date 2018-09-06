@@ -13,8 +13,12 @@
   "license": "ISC",
   "devDependencies": {
     "@types/ramda": "^0.25.37",
+    "bignumber.js": "^7.2.1",
     "ramda": "^0.25.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
+  },
+  "peerDependencies": {
+    "bignumber.js": "x"
   }
 }
