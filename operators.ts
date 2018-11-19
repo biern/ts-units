@@ -1,8 +1,10 @@
 import { Units } from './base';
-import { Add, Numbers, Negate } from './math';
+import { Add, Numbers, Negate, MulN } from './math';
 
 
-export type Pow<U extends string, N extends Numbers> = { [P in U]: N };
+export type Pow<U extends Units, N extends Numbers> =
+  { [P in keyof U]: MulN<U[P], N> }
+
 
 export type Inverse<U extends string | Units> =
   U extends string ? { [P in U]: -1 }
