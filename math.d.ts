@@ -238,4 +238,143 @@ export type Add<A, B> =
 
 export type Sub<A, B> = Add<A, Negate<B>>;
 
-
+export type MulN<A, B> =
+  A extends -7 ? (
+    B extends -1 ? 7
+    : B extends 0 ? 0
+    : B extends 1 ? -7
+    : 'out-of-bounds'
+  )
+  : A extends -6 ? (
+    B extends -1 ? 6
+    : B extends 0 ? 0
+    : B extends 1 ? -6
+    : 'out-of-bounds'
+  )
+  : A extends -5 ? (
+    B extends -1 ? 5
+    : B extends 0 ? 0
+    : B extends 1 ? -5
+    : 'out-of-bounds'
+  )
+  : A extends -4 ? (
+    B extends -1 ? 4
+    : B extends 0 ? 0
+    : B extends 1 ? -4
+    : 'out-of-bounds'
+  )
+  : A extends -3 ? (
+    B extends -2 ? 6
+    : B extends -1 ? 3
+    : B extends 0 ? 0
+    : B extends 1 ? -3
+    : B extends 2 ? -6
+    : 'out-of-bounds'
+  )
+  : A extends -2 ? (
+    B extends -3 ? 6
+    : B extends -2 ? 4
+    : B extends -1 ? 2
+    : B extends 0 ? 0
+    : B extends 1 ? -2
+    : B extends 2 ? -4
+    : B extends 3 ? -6
+    : 'out-of-bounds'
+  )
+  : A extends -1 ? (
+    B extends -7 ? 7
+    : B extends -6 ? 6
+    : B extends -5 ? 5
+    : B extends -4 ? 4
+    : B extends -3 ? 3
+    : B extends -2 ? 2
+    : B extends -1 ? 1
+    : B extends 0 ? 0
+    : B extends 1 ? -1
+    : B extends 2 ? -2
+    : B extends 3 ? -3
+    : B extends 4 ? -4
+    : B extends 5 ? -5
+    : B extends 6 ? -6
+    : B extends 7 ? -7
+    : 'out-of-bounds'
+  )
+  : A extends 0 ? (
+    B extends -7 ? 0
+    : B extends -6 ? 0
+    : B extends -5 ? 0
+    : B extends -4 ? 0
+    : B extends -3 ? 0
+    : B extends -2 ? 0
+    : B extends -1 ? 0
+    : B extends 0 ? 0
+    : B extends 1 ? 0
+    : B extends 2 ? 0
+    : B extends 3 ? 0
+    : B extends 4 ? 0
+    : B extends 5 ? 0
+    : B extends 6 ? 0
+    : B extends 7 ? 0
+    : 'out-of-bounds'
+  )
+  : A extends 1 ? (
+    B extends -7 ? -7
+    : B extends -6 ? -6
+    : B extends -5 ? -5
+    : B extends -4 ? -4
+    : B extends -3 ? -3
+    : B extends -2 ? -2
+    : B extends -1 ? -1
+    : B extends 0 ? 0
+    : B extends 1 ? 1
+    : B extends 2 ? 2
+    : B extends 3 ? 3
+    : B extends 4 ? 4
+    : B extends 5 ? 5
+    : B extends 6 ? 6
+    : B extends 7 ? 7
+    : 'out-of-bounds'
+  )
+  : A extends 2 ? (
+    B extends -3 ? -6
+    : B extends -2 ? -4
+    : B extends -1 ? -2
+    : B extends 0 ? 0
+    : B extends 1 ? 2
+    : B extends 2 ? 4
+    : B extends 3 ? 6
+    : 'out-of-bounds'
+  )
+  : A extends 3 ? (
+    B extends -2 ? -6
+    : B extends -1 ? -3
+    : B extends 0 ? 0
+    : B extends 1 ? 3
+    : B extends 2 ? 6
+    : 'out-of-bounds'
+  )
+  : A extends 4 ? (
+    B extends -1 ? -4
+    : B extends 0 ? 0
+    : B extends 1 ? 4
+    : 'out-of-bounds'
+  )
+  : A extends 5 ? (
+    B extends -1 ? -5
+    : B extends 0 ? 0
+    : B extends 1 ? 5
+    : 'out-of-bounds'
+  )
+  : A extends 6 ? (
+    B extends -1 ? -6
+    : B extends 0 ? 0
+    : B extends 1 ? 6
+    : 'out-of-bounds'
+  )
+  : A extends 7 ? (
+    B extends -1 ? -7
+    : B extends 0 ? 0
+    : B extends 1 ? 7
+    : 'out-of-bounds'
+  )
+  : 'out-of-bounds';

@@ -19,6 +19,20 @@ const sums = range
   }))
 
 
+const muls = range
+  .map((i) => ({
+    i,
+    values: range.map((j) => {
+      const result = i * j;
+      if (result > max || result < -max) {
+        return 'out-of-range';
+      } else {
+        return [j, result];
+      }
+    }).filter((i) => i !== 'out-of-range') as Array<[number, number]>
+  }))
+
+
 
 const outOfBounds = `'out-of-bounds'`;
 
@@ -55,6 +69,25 @@ const buildSubDefinition = (config: { leftArgName: string, rightArgName: string 
   return `export type Sub<${config.leftArgName}, ${config.rightArgName}> = Add<${config.leftArgName}, Negate<${config.rightArgName}>>;\n\n`;
 }
 
+const buildMulDefinition = (
+  config: { leftArgName: string; rightArgName: string },
+  muls: Array<{ i: number, values: Array<[number, number]>}>,
+): string => {
+  return `export type MulN<${config.leftArgName}, ${config.rightArgName}> =\n  `
+    + muls
+    .map(({ i, values }) => {
+      const multiplications = values
+        .map(([j, mul]) => `${config.rightArgName} extends ${j} ? ${mul}`)
+        .join('\n    : ')
+        + `\n    : ${outOfBounds}`;
+
+      return `${config.leftArgName} extends ${i} ? (\n    ${multiplications}\n  )`;
+    })
+    .join('\n  : ')
+    + `\n  : ${outOfBounds};\n\n`;
+}
+
+
 const buildNumbersDefinition = () =>
   `export type Numbers =
   ${range.join(' | ')} | ${outOfBounds};\n\n`;
@@ -69,4 +102,5 @@ console.log(
   + buildNegateDefinition({ argName })
   + buildAddDefinition({ leftArgName, rightArgName }, sums)
     + buildSubDefinition({ leftArgName, rightArgName })
+    + buildMulDefinition({ leftArgName, rightArgName }, muls)
 );

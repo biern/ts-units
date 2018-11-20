@@ -1,20 +1,24 @@
 {
   "name": "ts-units",
-  "version": "0.0.5",
+  "version": "0.0.6-1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "generate": "ts-node generate.ts > math.d.ts",
     "build": "rm -rf dist && tsc -p . && cp *.d.ts package*.json *.md dist/",
     "publish": "npm publish dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc -p . --noEmit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/ramda": "^0.25.37",
+    "bignumber.js": "^7.2.1",
     "ramda": "^0.25.0",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.3"
+    "typescript": "^3.1.6"
+  },
+  "peerDependencies": {
+    "bignumber.js": "x"
   }
 }
