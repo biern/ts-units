@@ -8,5 +8,5 @@ export type Units = {
 
 export type UnitsMeta<U extends Units> = {
   __type: U;
-  __units: keyof U;
+  __units: { [K in keyof U]: [K, U[K]] }[keyof U];
 }
